@@ -1,3 +1,4 @@
+using Api.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static System.IO.File;
@@ -9,12 +10,18 @@ namespace Api.Controllers
     [Authorize]
     public class MessagingController : ControllerBase
     {
-        [HttpGet("welcome")]
-        [AllowAnonymous]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<string> GetWelcomeMessage()
+        private readonly IRepository _repository;
+
+        public MessagingController(IRepository repository)
         {
-            return Ok("Welcome to the messaging system");
+            _repository = repository;
+        }
+
+        [HttpGet("read")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<List<string>> ReadMessages()
+        {
+            return _repository.Read();
         }
 
         [HttpPost("write")]
@@ -22,7 +29,7 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<string> WriteMessage([FromBody] string message)
         {
-            AppendAllTextAsync("logs.txt", message + '\n');
+            _repository.Write(message);
             return Ok($"Message: '{message}' written to file");
         }
     }

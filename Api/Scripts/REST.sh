@@ -19,3 +19,7 @@ do
         -d "$MESSAGE"
     echo
 done
+
+curl https://localhost:9999/messaging/read \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H 'Content-Type: application/json' \

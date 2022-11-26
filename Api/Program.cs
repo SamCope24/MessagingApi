@@ -1,10 +1,13 @@
 using Api.Extensions;
+using Api.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddJwtBearer(builder.Configuration);
+
+builder.Services.AddScoped<IRepository, FileRepository>();
 
 var app = builder.Build();
 

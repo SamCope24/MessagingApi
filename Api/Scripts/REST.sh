@@ -5,5 +5,11 @@ TOKEN=$( \
     -H "Content-Type: application/json" \
     -d '{"userName":"sam","password":"changeme"}')
 
-curl https://localhost:9999/messaging/getSecretMessage \
-    -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" 
+echo $TOKEN
+
+curl -X POST \
+    https://localhost:9999/messaging/write \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H 'accept: text/plain' \
+    -H 'Content-Type: application/json' \
+    -d '"Test Message"'

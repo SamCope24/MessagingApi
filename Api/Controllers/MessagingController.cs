@@ -8,20 +8,20 @@ namespace Api.Controllers
     [Authorize]
     public class MessagingController : ControllerBase
     {
-        [HttpGet("getMessage")]
+        [HttpGet("welcome")]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<string> GetMessage()
+        public ActionResult<string> GetWelcomeMessage()
         {
             return Ok("Welcome to the messaging system");
         }
 
-        [HttpGet("getSecretMessage")]
+        [HttpPost("write")]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<string> GetSecretMessage()
+        public ActionResult<string> WriteMessage([FromBody] string message)
         {
-            return Ok("Welcome to secret the messaging system");
+            return Ok(message);
         }
     }
 }

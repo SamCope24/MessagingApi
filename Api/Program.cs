@@ -18,5 +18,4 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.Logger.LogInformation("The app started");
 app.Run();

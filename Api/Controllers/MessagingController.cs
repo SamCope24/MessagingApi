@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static System.IO.File;
 
 namespace Api.Controllers
 {
@@ -21,7 +22,8 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<string> WriteMessage([FromBody] string message)
         {
-            return Ok(message);
+            AppendAllTextAsync("logs.txt", message + '\n');
+            return Ok($"Message: '{message}' written to file");
         }
     }
 }

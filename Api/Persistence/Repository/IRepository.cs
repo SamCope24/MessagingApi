@@ -1,4 +1,4 @@
-namespace Api.Repository
+namespace Api.Persistence.Repository
 {
     public interface IRepository
     {

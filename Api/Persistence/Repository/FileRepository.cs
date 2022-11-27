@@ -1,6 +1,6 @@
 using static System.IO.File;
 
-namespace Api.Repository
+namespace Api.Persistence.Repository
 {
     public class FileRepository : IRepository
     {

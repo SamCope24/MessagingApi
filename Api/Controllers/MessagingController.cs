@@ -1,7 +1,6 @@
-using Api.Repository;
+using Api.Persistence.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using static System.IO.File;
 
 namespace Api.Controllers
 {

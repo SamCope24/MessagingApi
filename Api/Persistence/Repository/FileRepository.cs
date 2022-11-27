@@ -15,5 +15,10 @@ namespace Api.Persistence.Repository
         {
             AppendAllText("logs.txt", message + '\n');
         }
+
+        public void Clean()
+        {
+            Create(_filePath).Close();
+        }
     }
 }

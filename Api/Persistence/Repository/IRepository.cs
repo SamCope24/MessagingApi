@@ -4,5 +4,6 @@ namespace Api.Persistence.Repository
     {
         List<string> Read();
         void Write(string message);
+        void Clean();
     }
 }

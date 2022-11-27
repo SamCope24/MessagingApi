@@ -26,5 +26,11 @@ namespace Api.Persistence.Repository
 
             _context.SaveChanges();
         }
+
+        public void Clean()
+        {
+            _context.Messages.RemoveRange(_context.Messages);
+            _context.SaveChanges();
+        }
     }
 }

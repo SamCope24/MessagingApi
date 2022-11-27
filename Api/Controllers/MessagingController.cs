@@ -29,7 +29,16 @@ namespace Api.Controllers
         public ActionResult<string> WriteMessage([FromBody] string message)
         {
             _repository.Write(message);
-            return Ok($"Message: '{message}' written to file");
+            return Ok($"Message: '{message}' written to {_repository.GetType()}");
+        }
+
+        [HttpDelete("delete")]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult DeleteMessages()
+        {
+            _repository.Clean();
+            return NoContent();
         }
     }
 }

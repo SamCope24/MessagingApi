@@ -23,3 +23,14 @@ done
 curl http://localhost:9999/messaging/read \
     -H "Authorization: Bearer ${TOKEN}" \
     -H 'Content-Type: application/json' \
+
+read
+
+curl -X DELETE \
+    http://localhost:9999/messaging/delete \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H 'Content-Type: application/json' 
+
+curl http://localhost:9999/messaging/read \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H 'Content-Type: application/json' 

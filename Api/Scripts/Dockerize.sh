@@ -19,5 +19,4 @@ fi
 
 # build the new container
 docker build -t api-image -f Dockerfile .
-docker create --name api-container api-image
-docker start api-container
+docker run -d --name api-container -p 9999:80 api-image
